@@ -1,0 +1,28 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# For webui
+GET      /                    myapp.controllers.web.IndexController.index
+GET      /web                 myapp.controllers.web.IndexController.index
+
+GET      /web/login           myapp.controllers.web.AuthController.index
+POST     /web/login           myapp.controllers.web.AuthController.login
+POST     /web/logout          myapp.controllers.web.AuthController.logout
+
+GET      /web/users           myapp.controllers.web.UserController.index
+GET      /web/users/new       myapp.controllers.web.UserController.edit
+POST     /web/users/new       myapp.controllers.web.UserController.create
+GET      /web/users/:userId   myapp.controllers.web.UserController.show(userId: String)
+PUT      /web/users/:userId   myapp.controllers.web.UserController.update(userId: String)
+DELETE   /web/users/:userId   myapp.controllers.web.UserController.delete(userId: String)
+
+
+# Map static resources from the /public folder to the /assets URL path
+# In Play 2.3 WebJars are automatically available as static assets.
+GET      /assets/*file        controllers.Assets.at(path="/public", file)
+
+# Device Apis
+POST     /v1/api/test         myapp.controllers.api.APIController.test
+
+# For ThirdPartyApi
